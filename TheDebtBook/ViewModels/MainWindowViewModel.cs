@@ -31,6 +31,21 @@ namespace TheDebtBook.ViewModels
 
         public MainWindowViewModel()
         {
+            
+        }
+
+
+        private DelegateCommand addDebtorOrCreditorCommand;
+        public DelegateCommand AddDebtorOrCreditorCommand =>
+            addDebtorOrCreditorCommand ?? (addDebtorOrCreditorCommand = new DelegateCommand(ExecuteCommandName));
+
+        void ExecuteCommandName()
+        {
+            //Slet ikke færdig kode
+            addWindow = new AddWindow();
+            //DebtorOrCreditor newDebtorOrCreditor = new DebtorOrCreditor();
+            addWindow.ShowDialog();
+            
            _debtorOrCreditors = new ObservableCollection<DebtorOrCreditor>();
            _debtorOrCreditors.Add(new DebtorOrCreditor("Bettina",5.5));
         }
