@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using TheDebtBook.Data;
 using TheDebtBook.DTO;
+using TheDebtBook.Views;
 
 namespace TheDebtBook.ViewModels
 {
@@ -35,7 +36,7 @@ namespace TheDebtBook.ViewModels
         {
             //Slet ikke færdig kode
             addWindow = new AddWindow();
-            DebtorOrCreditor newDebtorOrCreditor = new DebtorOrCreditor();
+            //DebtorOrCreditor newDebtorOrCreditor = new DebtorOrCreditor();
             addWindow.ShowDialog();
             
         }
