@@ -10,11 +10,10 @@ namespace TheDebtBook.DTO
         public double Sum { get; set; }
         public List<Debit> DebitsList { get; set; }
 
-        public DebtorOrCreditor(string name, double sum, List<Debit> debitsList)
+        public DebtorOrCreditor(string name, double sum)
         {
             Name = name;
             Sum = sum;
-            DebitsList = debitsList;
         }
 
 

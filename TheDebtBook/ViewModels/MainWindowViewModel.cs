@@ -1,14 +1,19 @@
 ﻿using Prism.Commands;
 using System;
-using System.Collections.Generic;
-using TheDebtBook.Data;
+using System.Collections.ObjectModel;
+using Prism.Mvvm;
 using TheDebtBook.DTO;
+using System.Collections.Generic;
+using System.Windows.Documents;
+using TheDebtBook.Data;
 using TheDebtBook.Views;
 
 namespace TheDebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
+       private ObservableCollection<DebtorOrCreditor> _debtorOrCreditors;
+
         private string _title = "My debt book";
         AddWindow addWindow;
         public string Title
@@ -17,10 +22,12 @@ namespace TheDebtBook.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        private void SetProperty(ref string title, string value)
+        public ObservableCollection<DebtorOrCreditor> DebtorOrCreditors
         {
-            throw new NotImplementedException();
+           get { return _debtorOrCreditors; }
+           set { SetProperty(ref _debtorOrCreditors, value); }
         }
+
 
         public MainWindowViewModel()
         {
@@ -39,6 +46,8 @@ namespace TheDebtBook.ViewModels
             //DebtorOrCreditor newDebtorOrCreditor = new DebtorOrCreditor();
             addWindow.ShowDialog();
             
+           _debtorOrCreditors = new ObservableCollection<DebtorOrCreditor>();
+           _debtorOrCreditors.Add(new DebtorOrCreditor("Bettina",5.5));
         }
     }
 }
