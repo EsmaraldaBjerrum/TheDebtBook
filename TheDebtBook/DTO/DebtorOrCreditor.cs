@@ -14,6 +14,7 @@ namespace TheDebtBook.DTO
         {
             Name = name;
             Sum = sum;
+            DebitsList = new List<Debit>();
         }
 
 

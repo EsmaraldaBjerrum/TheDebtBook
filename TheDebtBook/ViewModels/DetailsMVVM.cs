@@ -19,8 +19,14 @@ namespace TheDebtBook
         public DetailsMVVM(DebtorOrCreditor debtorOrCreditor)
         {
             _debtorOrCreditor = debtorOrCreditor;
+            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
+        public DetailsMVVM()
+        {
+            _debtorOrCreditor = new DebtorOrCreditor("navn", 50);
+            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
+        }
 
         private string value = "";
 
@@ -30,7 +36,7 @@ namespace TheDebtBook
 
         void ExecuteCommandName()
         {
-            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Today, Convert.ToDouble(value)));
+            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, Convert.ToDouble(value)));
         }
 
         bool CanExecuteCommandName()
