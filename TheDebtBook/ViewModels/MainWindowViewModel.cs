@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using TheDebtBook.Data;
+using TheDebtBook.DTO;
 
 namespace TheDebtBook.ViewModels
 {
@@ -18,10 +21,7 @@ namespace TheDebtBook.ViewModels
 
         public MainWindowViewModel()
         {
-            //HEJ MED JER! 
-            var dwedwfwfgwefwefwefwef = 0;
-            var hest = 666;
-         var søko = 555;
+
         }
     }
 }

@@ -1,11 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace TheDebtBook.DTO
 {
-   public class DebtorOrCreditor
+    [System.Serializable]
+    public class DebtorOrCreditor
    {
-      public string Name { get; set; }
-      public double Sum { get; set; }
-      public List<Debit> DebitsList { get; set; }
+        public string Name { get; set; }
+        public double Sum { get; set; }
+        public List<Debit> DebitsList { get; set; }
+
+        public DebtorOrCreditor(string name, double sum, List<Debit> debitsList)
+        {
+            Name = name;
+            Sum = sum;
+            DebitsList = debitsList;
+        }
+
+
+
+
    }
 }

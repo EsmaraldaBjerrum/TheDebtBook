@@ -68,6 +68,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\FileController.cs" />
     <Compile Include="DTO\Debit.cs" />
     <Compile Include="DTO\DebtorOrCreditor.cs" />
     <Compile Include="Views\DetailsWindow.xaml.cs">
