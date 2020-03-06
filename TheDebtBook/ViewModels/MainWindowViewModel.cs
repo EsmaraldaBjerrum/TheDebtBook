@@ -4,8 +4,9 @@ using System.Collections.ObjectModel;
 using Prism.Mvvm;
 using TheDebtBook.DTO;
 using System.Collections.Generic;
+using System.Windows.Documents;
 using TheDebtBook.Data;
-using TheDebtBook.DTO;
+using TheDebtBook.Views;
 
 namespace TheDebtBook.ViewModels
 {
@@ -31,21 +32,7 @@ namespace TheDebtBook.ViewModels
         public MainWindowViewModel()
         {
            _debtorOrCreditors = new ObservableCollection<DebtorOrCreditor>();
-           _debtorOrCreditors.Add(new DebtorOrCreditor( {Name = "Bettina", Sum = 55.5}))
-        }
-
-
-        private DelegateCommand addDebtorOrCreditorCommand;
-        public DelegateCommand AddDebtorOrCreditorCommand =>
-            addDebtorOrCreditorCommand ?? (addDebtorOrCreditorCommand = new DelegateCommand(ExecuteCommandName));
-
-        void ExecuteCommandName()
-        {
-            //Slet ikke færdig kode
-            addWindow = new AddWindow();
-            DebtorOrCreditor newDebtorOrCreditor = new DebtorOrCreditor();
-            addWindow.ShowDialog();
-            
+           _debtorOrCreditors.Add(new DebtorOrCreditor("Bettina",5.5));
         }
     }
 }
