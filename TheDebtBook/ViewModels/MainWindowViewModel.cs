@@ -18,7 +18,7 @@ namespace TheDebtBook.ViewModels
 
         public MainWindowViewModel()
         {
-
+            //HEJ MED JER! 
             var dwedwfwfgwefwefwefwef = 0;
             var hest = 666;
         }
