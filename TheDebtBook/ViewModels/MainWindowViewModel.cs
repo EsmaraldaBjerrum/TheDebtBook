@@ -1,4 +1,4 @@
-﻿using Prism.Mvvm;
+﻿using System;
 
 namespace TheDebtBook.ViewModels
 {
@@ -11,9 +11,15 @@ namespace TheDebtBook.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        private void SetProperty(ref string title, string value)
+        {
+            throw new NotImplementedException();
+        }
+
         public MainWindowViewModel()
         {
 
+            var dwedwfwfgwefwefwefwef = 0;
         }
     }
 }
