@@ -7,8 +7,7 @@ namespace TheDebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
-        AddWindow addWindow;
+        private string _title = "My debt book";
         public string Title
         {
             get { return _title; }

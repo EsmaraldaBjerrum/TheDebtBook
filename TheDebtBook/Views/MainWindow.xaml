@@ -3,8 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525">
+        Title="{Binding Title}" Height="388.667" Width="327.667">
     <Grid>
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="MainTitle" Content="Debtors or creditors" Grid.Column="0" Grid.Row="0" Margin="5" Style="{StaticResource titleMainStyling}"/>
+        <ListView Name="ListDebtorsOrCreditors" Grid.Column="0" Grid.Row="1" Grid.RowSpan="2" Margin="10"/>
+        <Button Content="Add" Grid.Column="1" Grid.Row="2" Margin="25,10,25,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" Style="{StaticResource buttonStyling}"/>
+
     </Grid>
 </Window>
