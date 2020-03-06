@@ -1,0 +1,27 @@
+﻿<Window x:Class="TheDebtBook.DetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TheDebtBook"
+        mc:Ignorable="d"
+        Title="Details" Height="375" Width="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="194*"/>
+            <RowDefinition Height="47*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Style="{StaticResource textStyling}" Margin="20,20,20,15.333" Grid.RowSpan="5"/>
+        <Label Style="{StaticResource textStyling}" Content="New Debit:" Grid.Column="1" Margin="5,20,10.333,5"/>
+        <TextBox Style="{StaticResource textStyling}" Margin="5,1,10.333,0" Grid.Column="1" Grid.Row="1"/>
+        <Button Style="{StaticResource buttonStyling}" Content="Add" Grid.Row="2" Grid.Column="1" Margin="78,10,10.333,5.333"/>
+        <Button Style="{StaticResource buttonStyling}" Content="Close"  Grid.Row="4" Grid.Column="1" Margin="78,11.333,10.333,15.333"/>
+    </Grid>
+</Window>
