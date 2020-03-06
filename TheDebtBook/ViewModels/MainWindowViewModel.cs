@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
+using TheDebtBook.DTO;
+using TheDebtBook.Views;
 
 namespace TheDebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
         private string _title = "Prism Application";
+        AddWindow addWindow;
         public string Title
         {
             get { return _title; }
@@ -18,10 +22,21 @@ namespace TheDebtBook.ViewModels
 
         public MainWindowViewModel()
         {
-            //HEJ MED JER! 
-            var dwedwfwfgwefwefwefwef = 0;
-            var hest = 666;
-            var søko = 555;
+            
+        }
+
+
+        private DelegateCommand addDebtorOrCreditorCommand;
+        public DelegateCommand AddDebtorOrCreditorCommand =>
+            addDebtorOrCreditorCommand ?? (addDebtorOrCreditorCommand = new DelegateCommand(ExecuteCommandName));
+
+        void ExecuteCommandName()
+        {
+            //Slet ikke færdig kode
+            addWindow = new AddWindow();
+            DebtorOrCreditor newDebtorOrCreditor = new DebtorOrCreditor();
+            addWindow.ShowDialog();
+            
         }
     }
 }
