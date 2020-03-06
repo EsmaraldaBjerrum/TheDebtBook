@@ -26,5 +26,10 @@
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontFamily" Value="Baskerville Old Face"/>
         </Style>
+
+        <Style x:Key="headerStyleMain" TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="Visibility" Value="Collapsed" />
+        </Style>
+
     </Application.Resources>
 </prism:PrismApplication>
