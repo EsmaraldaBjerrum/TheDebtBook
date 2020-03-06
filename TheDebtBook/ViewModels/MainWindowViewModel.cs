@@ -4,7 +4,7 @@ namespace TheDebtBook.ViewModels
 {
     public class MainWindowViewModel : BindableBase
     {
-        private string _title = "Prism Application";
+        private string _title = "My debt book";
         public string Title
         {
             get { return _title; }
@@ -18,10 +18,7 @@ namespace TheDebtBook.ViewModels
 
         public MainWindowViewModel()
         {
-            //HEJ MED JER! 
-            var dwedwfwfgwefwefwefwef = 0;
-            var hest = 666;
-         var søko = 555;
+           
         }
     }
 }

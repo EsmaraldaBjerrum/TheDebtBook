@@ -8,6 +8,7 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontFamily" Value="Baskerville Old Face" />
         </Style>
+
         <Style x:Key="buttonStyling" TargetType="Button">
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontFamily" Value="Baskerville Old Face" />
@@ -16,6 +17,12 @@
                     <SolidColorBrush Color="BlanchedAlmond"/>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style x:Key="titleMainStyling" TargetType="Label">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontFamily" Value="Baskerville Old Face"/>
         </Style>
     </Application.Resources>
 </prism:PrismApplication>
