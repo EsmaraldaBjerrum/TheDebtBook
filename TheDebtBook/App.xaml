@@ -4,6 +4,18 @@
 	     xmlns:prism="http://prismlibrary.com/"
              xmlns:local="clr-namespace:TheDebtBook">
     <Application.Resources>
-         
+        <Style x:Key="textStyling" TargetType="Control">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Baskerville Old Face" />
+        </Style>
+        <Style x:Key="buttonStyling" TargetType="Button">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Baskerville Old Face" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <SolidColorBrush Color="BlanchedAlmond"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </prism:PrismApplication>
