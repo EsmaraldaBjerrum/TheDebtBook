@@ -20,6 +20,7 @@ namespace TheDebtBook.ViewModels
         {
 
             var dwedwfwfgwefwefwefwef = 0;
+            var hest = 666;
         }
     }
 }
