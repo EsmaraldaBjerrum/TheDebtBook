@@ -60,6 +60,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +71,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DTO\Debit.cs" />
+    <Compile Include="DTO\DebtorOrCreditor.cs" />
+    <Compile Include="Views\DetailsWindow.xaml.cs">
+      <DependentUpon>DetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BindableBase.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -104,5 +113,6 @@
   <ItemGroup>
     <PackageReference Include="Prism.Unity" Version="7.2.0.1367" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

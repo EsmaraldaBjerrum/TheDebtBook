@@ -11,6 +11,8 @@
         <Style x:Key="buttonStyling" TargetType="Button">
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontFamily" Value="Baskerville Old Face" />
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Width" Value="55"/>
             <Setter Property="Background">
                 <Setter.Value>
                     <SolidColorBrush Color="BlanchedAlmond"/>
