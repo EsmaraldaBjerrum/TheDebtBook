@@ -21,7 +21,7 @@ namespace TheDebtBook.ViewModels
             //HEJ MED JER! 
             var dwedwfwfgwefwefwefwef = 0;
             var hest = 666;
-         var søko = 555;
+            var søko = 555;
         }
     }
 }
