@@ -5,13 +5,25 @@ namespace TheDebtBook.DTO
     [System.Serializable]
     public class Debit
    {
-      public DateTime DebitDateTime { get; set; }
-      public double DebitValue { get; set; }
+
+        private DateTime _date;
+        public string Date { 
+            get
+            {
+                return _date.ToShortDateString();
+            }                
+             set
+             {
+                _date = DateTime.Parse(value);
+             }                
+       }
+
+        public double Value { get; set; }
 
         public Debit(DateTime debitDateTime, double debitValue)
         {
-            DebitDateTime = debitDateTime;
-            DebitValue = debitValue;
+            _date = debitDateTime;
+            Value = debitValue;
         }
    }
 }

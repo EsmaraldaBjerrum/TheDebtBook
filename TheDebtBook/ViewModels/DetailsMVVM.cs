@@ -7,41 +7,62 @@ using System.Text;
 using System.Threading.Tasks;
 using TheDebtBook.DTO;
 using Prism.Commands;
-
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace TheDebtBook
-{ 
+{
 
     public class DetailsMVVM : BindableBase
     {
-        public DebtorOrCreditor DebtorOrCreditor { get; set; }
-
-        public DetailsMVVM(DebtorOrCreditor debtorOrCreditor)
+        public ObservableCollection<Debit> DebitsList { get; set; }
+        
+        public DetailsMVVM(List<Debit> debitsList)
         {
-            DebtorOrCreditor = debtorOrCreditor;
-            DebtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
+            DebitsList = new ObservableCollection<Debit>();
+            DebitsList.AddRange(debitsList);
+            DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         public DetailsMVVM()
         {
-            DebtorOrCreditor = new DebtorOrCreditor("navn", 50);
-            DebtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
+            DebitsList = new ObservableCollection<Debit>();
+            DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
-        private string value = "";
+        private string _value = "";
 
-        private DelegateCommand _addDebtorOrCreditor;
-        public DelegateCommand CommandName =>
-            _addDebtorOrCreditor ?? (_addDebtorOrCreditor = new DelegateCommand(ExecuteCommandName, CanExecuteCommandName));
-
-        void ExecuteCommandName()
+        public string Value
         {
-            DebtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, Convert.ToDouble(value)));
+            get
+            {
+                return _value;
+            }
+            set
+            {
+                _value = value;
+                RaisePropertyChanged();
+            }
+        } 
+        
+
+
+        ICommand _addDebtorOrCreditor;
+
+        public ICommand AddDebtorOrCreditor
+        { 
+            get { return _addDebtorOrCreditor ?? (_addDebtorOrCreditor = new DelegateCommand(ExecuteAddDebtorOrCreditor)); }
         }
-
-        bool CanExecuteCommandName()
+        void ExecuteAddDebtorOrCreditor()
         {
-            return true;
+            double value;
+            if (Value != "" && double.TryParse(Value, out value))
+                DebitsList.Add(new Debit(DateTime.Now.Date, value));
+            
+            Value = "";
+            
+
         }
     }
 }

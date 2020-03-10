@@ -13,18 +13,18 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
             <RowDefinition Height="20"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="194*"/>
+            <RowDefinition Height="44.667"/>
+            <RowDefinition Height="184*"/>
             <RowDefinition Height="47*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid Style="{StaticResource textStyling}" Margin="20,20,20,15.333" Grid.RowSpan="5" ItemsSource="{Binding DebtorOrCreditor.DebitsList}"/>
-        <Label Style="{StaticResource textStyling}" Content="New Debit:" Grid.Column="1" Margin="5,20,10.333,5"/>
-        <TextBox Style="{StaticResource textStyling}" Margin="5,1,10.333,0" Grid.Column="1" Grid.Row="1"/>
-        <Button Style="{StaticResource buttonStyling}" Content="Add" Grid.Row="2" Grid.Column="1" Margin="78,10,10.333,5.333"/>
-        <Button Style="{StaticResource buttonStyling}" Content="Close"  Grid.Row="4" Grid.Column="1" Margin="78,11.333,10.333,15.333" Click="Button_Click"/>
+        <DataGrid Style="{StaticResource textStyling}" Margin="20,20,20,15" Grid.RowSpan="5" ItemsSource="{Binding Path=DebitsList}" IsReadOnly="True" />
+        <Label Style="{StaticResource textStyling}" Content="New Debit:" Grid.Column="1" Margin="5,20,11.333,5"/>
+        <TextBox Style="{StaticResource textStyling}" Margin="5,1,10.333,0" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Value}"/>
+        <Button Style="{StaticResource buttonStyling}" Content="Add" Grid.Row="2" Grid.Column="1" Command="{Binding Path=AddDebtorOrCreditor}" HorizontalAlignment="Right" Margin="0, 0, 10, 0"/>
+        <Button Style="{StaticResource buttonStyling}" Content="Close"  Grid.Row="4" Grid.Column="1" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0, 0, 10, 15"/>
     </Grid>
 </Window>

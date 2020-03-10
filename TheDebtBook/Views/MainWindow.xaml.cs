@@ -14,5 +14,11 @@ namespace TheDebtBook.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DetailsWindow window = new DetailsWindow();
+            window.Show();
+        }
     }
 }
