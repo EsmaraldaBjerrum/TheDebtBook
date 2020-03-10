@@ -14,18 +14,18 @@ namespace TheDebtBook
 
     public class DetailsMVVM : BindableBase
     {
-        public DebtorOrCreditor _debtorOrCreditor { get; set; }
+        public DebtorOrCreditor DebtorOrCreditor { get; set; }
 
         public DetailsMVVM(DebtorOrCreditor debtorOrCreditor)
         {
-            _debtorOrCreditor = debtorOrCreditor;
-            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
+            DebtorOrCreditor = debtorOrCreditor;
+            DebtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         public DetailsMVVM()
         {
-            _debtorOrCreditor = new DebtorOrCreditor("navn", 50);
-            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
+            DebtorOrCreditor = new DebtorOrCreditor("navn", 50);
+            DebtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         private string value = "";
@@ -36,7 +36,7 @@ namespace TheDebtBook
 
         void ExecuteCommandName()
         {
-            _debtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, Convert.ToDouble(value)));
+            DebtorOrCreditor.DebitsList.Add(new Debit(DateTime.Now.Date, Convert.ToDouble(value)));
         }
 
         bool CanExecuteCommandName()

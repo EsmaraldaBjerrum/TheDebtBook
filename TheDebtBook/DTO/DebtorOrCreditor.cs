@@ -17,8 +17,14 @@ namespace TheDebtBook.DTO
             DebitsList = new List<Debit>();
         }
 
+        public DebtorOrCreditor()
+        {
+            
+        }
 
-
-
+        public DebtorOrCreditor Clone()
+        {
+           return this.MemberwiseClone() as DebtorOrCreditor;
+        }
    }
 }

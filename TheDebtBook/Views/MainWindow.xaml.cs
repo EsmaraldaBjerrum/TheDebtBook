@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
+using TheDebtBook.DTO;
 
 namespace TheDebtBook.Views
 {
