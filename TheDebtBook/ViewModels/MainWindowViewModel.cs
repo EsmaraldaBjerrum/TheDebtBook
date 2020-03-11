@@ -120,6 +120,7 @@ namespace TheDebtBook.ViewModels
                     dlg.DataContext = vm;
                     if (dlg.ShowDialog() == true)
                     {
+                        //sætte debit ind her? 
                         DebtorOrCreditors.Add(newDebitorOrCreditor);
                         CurrentDebtorOrCreditor = newDebitorOrCreditor;
                     }
