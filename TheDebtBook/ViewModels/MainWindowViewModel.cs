@@ -79,56 +79,56 @@ namespace TheDebtBook.ViewModels
             };
         }
 
-      ICommand _editDebitorOrCreditorCommand;
-      public ICommand EditDebitorOrCreditor
-      {
-         get
-         {
-            return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
-               {
-                  var tempCreditorOrDebitor = CurrentDebtorOrCreditor.Clone();
-                  var vm = new DetailsMVVM(tempCreditorOrDebitor);
-                  var dlg = new DetailsWindow {DataContext = vm, Owner = App.Current.MainWindow};
-                  if (dlg.ShowDialog() == true)
-                  {
-                     CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
-                     CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
-                     CurrentDebtorOrCreditor.Sum = tempCreditorOrDebitor.DebitsList.Sum(item => item.DebitValue);
-                  }
-
-                  Dirty = true;
-               },
-               () => {
-                  return CurrentIndex >= 0;
-               }
-            ).ObservesProperty(() => CurrentIndex));
-         }
-      }
-
-      //ICommand _newDebitorOrCreditorCommand;
-
-      //public ICommand AddNewDebitorOrCreditorCommand
+      //ICommand _editDebitorOrCreditorCommand;
+      //public ICommand EditDebitorOrCreditor
       //{
       //   get
       //   {
-      //      return _newDebitorOrCreditorCommand ?? (_newDebitorOrCreditorCommand = new DelegateCommand(() =>
-      //      {
-      //         var newDebitorOrCreditor = new DebtorOrCreditor();
-      //         var vm = new AddWindowViewModel("Add new debitor or creditor", newDebitorOrCreditor);
-
-      //         var dlg = new AddWindow();
-      //         dlg.DataContext = vm;
-      //         if (dlg.ShowDialog() == true)
+      //      return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
       //         {
-      //            DebtorOrCreditors.Add(newDebitorOrCreditor);
-      //            CurrentDebtorOrCreditor = newDebitorOrCreditor;
+      //            var tempCreditorOrDebitor = CurrentDebtorOrCreditor.Clone();
+      //            var vm = new DetailsMVVM(tempCreditorOrDebitor);
+      //            var dlg = new DetailsWindow {DataContext = vm, Owner = App.Current.MainWindow};
+      //            if (dlg.ShowDialog() == true)
+      //            {
+      //               CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
+      //               CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
+      //               CurrentDebtorOrCreditor.Sum = tempCreditorOrDebitor.DebitsList.Sum(item => item.DebitValue);
+      //            }
+
+      //            Dirty = true;
+      //         },
+      //         () => {
+      //            return CurrentIndex >= 0;
       //         }
-      //          Dirty = true;
-      //      }));
+      //      ).ObservesProperty(() => CurrentIndex));
       //   }
       //}
 
-      private ICommand _closingCommand;
+        ICommand _newDebitorOrCreditorCommand;
+
+        public ICommand AddNewDebitorOrCreditorCommand
+        {
+            get
+            {
+                return _newDebitorOrCreditorCommand ?? (_newDebitorOrCreditorCommand = new DelegateCommand(() =>
+                {
+                    var newDebitorOrCreditor = new DebtorOrCreditor();
+                    var vm = new AddViewModel("Add new debitor or creditor", newDebitorOrCreditor);
+
+                    var dlg = new AddWindow();
+                    dlg.DataContext = vm;
+                    if (dlg.ShowDialog() == true)
+                    {
+                        DebtorOrCreditors.Add(newDebitorOrCreditor);
+                        CurrentDebtorOrCreditor = newDebitorOrCreditor;
+                    }
+                    Dirty = true;
+                }));
+            }
+        }
+
+        private ICommand _closingCommand;
 
       public ICommand ClosingCommand
       {

@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TheDebtBook.Views"
+        xmlns:local1="clr-namespace:TheDebtBook.ViewModels"
         mc:Ignorable="d"
-        Title="Add Debtor Or Creditor" Height="134.404" Width="261.121">
+        Title="{Binding Path=Title}" Height="134.404" Width="264.289">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -17,11 +17,45 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Label x:Name="nameLabel" Style="{StaticResource textStyling}" Target="{Binding ElementName=nameTxtbx}" Margin="5">_Name:</Label>
-        <Label x:Name="debitLabel" Style="{StaticResource textStyling}" Grid.Row="1" Target="{Binding ElementName=debitTxtbx}" Margin="5">_Debit:</Label>
-        <TextBox x:Name="nameTxtbx" Style="{StaticResource textStyling}" Grid.Column=" 1" Grid.ColumnSpan="2" Margin="5" Width="175"/>
-        <TextBox x:Name="debitTxtbx" Style="{StaticResource textStyling}" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Width="175"/>
-        <Button x:Name="cancelButton" Style="{StaticResource buttonStyling}" Grid.Row="2" Margin="5">_Cancel</Button>
-        <Button x:Name="saveButton" Style="{StaticResource buttonStyling}" Grid.Column="2" Grid.Row="2" Margin="5" HorizontalAlignment="Right">_Save</Button>
+        <Label x:Name="nameLabel" 
+               Style="{StaticResource textStyling}" 
+               Target="{Binding ElementName=nameTxtbx}" 
+               Margin="5"
+               >_Name:</Label>
+        <Label x:Name="debitLabel" 
+               Style="{StaticResource textStyling}" 
+               Grid.Row="1" 
+               Target="{Binding ElementName=debitTxtbx}" 
+               Margin="5">_Debit:</Label>
+        <TextBox x:Name="nameTxtbx" 
+                 Style="{StaticResource textStyling}"
+                 Text="{Binding Path=NewDebtorOrCreditor.Name}"
+                 DataContext="{Binding }"
+                 Grid.Column=" 1" 
+                 Grid.ColumnSpan="2" 
+                 Margin="5" 
+                 Width="175"/>
+        <TextBox x:Name="debitTxtbx" 
+                 Style="{StaticResource textStyling}" 
+                 Text="{Binding Path=NewDebtorOrCreditor.Sum}"
+                 PreviewTextInput="NumberValidationTextBox"
+                 Grid.Column="1" 
+                 Grid.Row="1" 
+                 Grid.ColumnSpan="2" 
+                 Margin="5" 
+                 Width="175"/>
+        <Button x:Name="cancelButton" 
+                Style="{StaticResource buttonStyling}" 
+                Grid.Row="2" 
+                Margin="5" 
+                IsCancel="True">_Cancel</Button>
+        <Button x:Name="saveButton" 
+                Style="{StaticResource buttonStyling}" 
+                Grid.Column="2" 
+                Grid.Row="2" 
+                Margin="5" 
+                HorizontalAlignment="Right" 
+                IsDefault="True" 
+                Click="Ok_Click">_OK</Button>
     </Grid>
 </Window>

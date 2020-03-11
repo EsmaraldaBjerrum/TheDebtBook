@@ -75,6 +75,7 @@
     <Compile Include="Data\FileController.cs" />
     <Compile Include="DTO\Debit.cs" />
     <Compile Include="DTO\DebtorOrCreditor.cs" />
+    <Compile Include="ViewModels\AddViewModel.cs" />
     <Compile Include="ViewModels\DetailsMVVM.cs" />
     <Compile Include="Views\DetailsWindow.xaml.cs">
       <DependentUpon>DetailsWindow.xaml</DependentUpon>
