@@ -42,16 +42,15 @@ namespace TheDebtBook
                 _value = value.Replace('.', ',');
                 RaisePropertyChanged();
             }
-        }         
+        } 
+        
+        ICommand _addDebit;
 
-
-        ICommand _addDebtorOrCreditor;
-
-        public ICommand AddDebtorOrCreditor
+        public ICommand AddDebit
         { 
-            get { return _addDebtorOrCreditor ?? (_addDebtorOrCreditor = new DelegateCommand(ExecuteAddDebtorOrCreditor)); }
+            get { return _addDebit ?? (_addDebit = new DelegateCommand(ExecuteAddDebit)); }
         }
-        void ExecuteAddDebtorOrCreditor()
+        void ExecuteAddDebit()
         {
             double value;
             if (Value != "" && double.TryParse(Value, out value))
