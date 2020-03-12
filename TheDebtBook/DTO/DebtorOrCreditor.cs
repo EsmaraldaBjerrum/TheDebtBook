@@ -7,19 +7,28 @@ namespace TheDebtBook.DTO
     public class DebtorOrCreditor
    {
         public string Name { get; set; }
-        public double Sum { get; set; }
+        public double Sum {
+            get
+            {
+                double sum = 0;
+                foreach (Debit debit in DebitsList)
+                {
+                    sum += debit.Value;
+                }
+                return sum;
+            }
+        }
         public List<Debit> DebitsList { get; set; }
 
-        public DebtorOrCreditor(string name, double sum)
+        public DebtorOrCreditor(string name)
         {
             Name = name;
-            Sum = sum;
             DebitsList = new List<Debit>();
         }
 
         public DebtorOrCreditor()
         {
-            
+            DebitsList = new List<Debit>();
         }
 
         public DebtorOrCreditor Clone()

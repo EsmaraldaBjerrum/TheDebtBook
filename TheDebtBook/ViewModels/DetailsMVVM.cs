@@ -58,11 +58,13 @@ namespace TheDebtBook
         {
             double value;
             if (Value != "" && double.TryParse(Value, out value))
+            {
                 DebitsList.Add(new Debit(DateTime.Now.Date, value));
+                Value = "";
+            }
+            else
+                Value = "Value is not correct";       
             
-            Value = "";
-            
-
         }
     }
 }
