@@ -42,8 +42,7 @@ namespace TheDebtBook
                 _value = value;
                 RaisePropertyChanged();
             }
-        } 
-        
+        }         
 
 
         ICommand _addDebtorOrCreditor;
@@ -61,7 +60,7 @@ namespace TheDebtBook
                 Value = "";
             }
             else
-                Value = "Value is not correct";       
+                Value = "Debit must be a number";       
             
         }
     }
