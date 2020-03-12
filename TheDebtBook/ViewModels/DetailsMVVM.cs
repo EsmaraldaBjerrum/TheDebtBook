@@ -1,66 +1,61 @@
-﻿using Prism.Mvvm;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheDebtBook.DTO;
-using Prism.Commands;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
+using TheDebtBook.DTO;
 
 namespace TheDebtBook
 {
 
-    public class DetailsMVVM : BindableBase
-    {
-        public ObservableCollection<Debit> DebitsList { get; set; }
-        
-        public DetailsMVVM(List<Debit> debitsList)
-        {
-            DebitsList = new ObservableCollection<Debit>();
-            DebitsList.AddRange(debitsList);
-        }
+   public class DetailsMVVM : BindableBase
+   {
+      public ObservableCollection<Debit> DebitsList { get; set; }
 
-        public DetailsMVVM()
-        {
-            DebitsList = new ObservableCollection<Debit>();
-        }
+      public DetailsMVVM(List<Debit> debitsList)
+      {
+         DebitsList = new ObservableCollection<Debit>();
+         DebitsList.AddRange(debitsList);
+      }
 
-        private string _value = "";
+      public DetailsMVVM()
+      {
+         DebitsList = new ObservableCollection<Debit>();
+      }
 
-        public string Value
-        {
-            get
-            {
-                return _value;
-            }
-            set
-            {
-                _value = value.Replace('.', ',');
-                RaisePropertyChanged();
-            }
-        } 
-        
-        ICommand _addDebit;
+      private string _value = "";
 
-        public ICommand AddDebit
-        { 
-            get { return _addDebit ?? (_addDebit = new DelegateCommand(ExecuteAddDebit)); }
-        }
-        void ExecuteAddDebit()
-        {
-            double value;
-            if (Value != "" && double.TryParse(Value, out value))
-            {
-                DebitsList.Add(new Debit(DateTime.Now.Date, value));
-                Value = "";
-            }
-            else
-                Value = "Debit must be a number";       
-            
-        }
-    }
+      public string Value
+      {
+         get
+         {
+            return _value;
+         }
+         set
+         {
+            _value = value.Replace('.', ',');
+            RaisePropertyChanged();
+         }
+      }
+
+      ICommand _addDebit;
+
+      public ICommand AddDebit
+      {
+         get { return _addDebit ?? (_addDebit = new DelegateCommand(ExecuteAddDebit)); }
+      }
+      void ExecuteAddDebit()
+      {
+         double value;
+         if (Value != "" && double.TryParse(Value, out value))
+         {
+            DebitsList.Add(new Debit(DateTime.Now.Date, value));
+            Value = "";
+         }
+         else
+            Value = "Debit must be a number";
+
+      }
+   }
 }

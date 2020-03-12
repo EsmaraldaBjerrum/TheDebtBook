@@ -1,9 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using TheDebtBook.Data;
 using TheDebtBook.DTO;
@@ -26,7 +24,7 @@ namespace TheDebtBook.ViewModels
       public ObservableCollection<DebtorOrCreditor> DebtorOrCreditors
       {
          get { return _debtorOrCreditors; }
-         set { SetProperty(ref _debtorOrCreditors, value);}
+         set { SetProperty(ref _debtorOrCreditors, value); }
       }
 
       DebtorOrCreditor _currentDebtorOrCreditor = null;
@@ -37,7 +35,6 @@ namespace TheDebtBook.ViewModels
          set
          {
             SetProperty(ref _currentDebtorOrCreditor, value);
-            RaisePropertyChanged();
          }
       }
 
@@ -72,18 +69,18 @@ namespace TheDebtBook.ViewModels
          {
             return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
             {
-                var vm = new DetailsMVVM(CurrentDebtorOrCreditor.DebitsList);
-                var dlg = new DetailsWindow
-                {
-                    DataContext = vm,
-                    Owner = App.Current.MainWindow
-                };
+               var vm = new DetailsMVVM(CurrentDebtorOrCreditor.DebitsList);
+               var dlg = new DetailsWindow
+               {
+                  DataContext = vm,
+                  Owner = App.Current.MainWindow
+               };
 
-                dlg.ShowDialog();                              
+               dlg.ShowDialog();
 
-                DebtorOrCreditor updatedDebtorOrCreditor = new DebtorOrCreditor(CurrentDebtorOrCreditor.Name);
-                updatedDebtorOrCreditor.DebitsList = vm.DebitsList.ToList();
-                DebtorOrCreditors[CurrentIndex] = updatedDebtorOrCreditor;
+               DebtorOrCreditor updatedDebtorOrCreditor = new DebtorOrCreditor(CurrentDebtorOrCreditor.Name);
+               updatedDebtorOrCreditor.DebitsList = vm.DebitsList.ToList();
+               DebtorOrCreditors[CurrentIndex] = updatedDebtorOrCreditor;
 
             }));
          }
@@ -113,7 +110,7 @@ namespace TheDebtBook.ViewModels
 
       private void OnWindowClosing(object obj)
       {
-                  _fileController.WriteToFile(DebtorOrCreditors);
+         _fileController.WriteToFile(DebtorOrCreditors);
       }
    }
 }
