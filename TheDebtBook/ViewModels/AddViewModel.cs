@@ -26,8 +26,8 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        double newDebit;
-        public double NewDebit
+        string newDebit;
+        public string NewDebit
         {
             get { return newDebit; }
             set
@@ -46,14 +46,29 @@ namespace TheDebtBook.ViewModels
             }
         }
 
-        public bool IsNameAndDebitValid
+        public bool IsNameValid
         {
             get
             {
-                bool isNameAndDebitValid = true;
-                if (string.IsNullOrWhiteSpace(NewDebtorOrCreditor.Name) || double.IsNaN(newDebit))
-                    isNameAndDebitValid = false;
-                return isNameAndDebitValid;
+                bool isNameValid = true;
+                if (string.IsNullOrWhiteSpace(NewDebtorOrCreditor.Name))
+                    isNameValid = false;
+                return isNameValid;
+            }
+        }
+        public bool IsDebitValid
+        {
+            get
+            {
+                bool isDebitValid = true;
+                double debit = 0;
+                if (double.TryParse(NewDebit, out debit))
+                {
+                    isDebitValid = true;
+                }
+                else
+                    isDebitValid = false;
+                return isDebitValid;
             }
         }
     }

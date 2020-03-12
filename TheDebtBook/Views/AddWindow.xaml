@@ -3,15 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local1="clr-namespace:TheDebtBook.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Path=Title}" Height="134.404" Width="264.289"
+        Title="{Binding Path=Title}" Height="132.271" Width="330.424" 
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="52"/>
+            <ColumnDefinition Width="auto" MinWidth="183.2"/>
+            <ColumnDefinition Width="52" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -21,42 +21,39 @@
         <Label x:Name="nameLabel" 
                Style="{StaticResource textStyling}" 
                Target="{Binding ElementName=nameTxtbx}" 
-               Margin="5"
+               Margin="5,5,4.8,5.2"
                >_Name:</Label>
         <Label x:Name="debitLabel" 
                Style="{StaticResource textStyling}" 
                Grid.Row="1" 
                Target="{Binding ElementName=debitTxtbx}" 
-               Margin="5">_Debit:</Label>
+               Margin="5,4.8,4.8,4.6">_Debit:</Label>
         <TextBox x:Name="nameTxtbx" 
                  Style="{StaticResource textStyling}"
                  Text="{Binding Path=NewDebtorOrCreditor.Name}"
                  DataContext="{Binding}"
                  Grid.Column=" 1" 
                  Grid.ColumnSpan="2" 
-                 Margin="5" 
-                 Width="175"/>
+                 Margin="6.2,5,-19.2,5.2"/>
         <TextBox x:Name="debitTxtbx" 
                  Style="{StaticResource textStyling}" 
                  Text="{Binding Path=NewDebit}"
-                 PreviewTextInput="NumberValidationTextBox"
                  Grid.Column="1" 
                  Grid.Row="1" 
                  Grid.ColumnSpan="2" 
-                 Margin="5" 
-                 Width="175"/>
+                 Margin="6.2,4.8,-19.2,4.6"/>
         <Button x:Name="cancelButton" 
                 Style="{StaticResource buttonStyling}" 
                 Grid.Row="2" 
-                Margin="5" 
-                IsCancel="True">_Cancel</Button>
+                Margin="5,5.4,5.8,5.4" 
+                IsCancel="True" Height="Auto" Width="Auto">_Cancel</Button>
         <Button x:Name="saveButton" 
                 Style="{StaticResource buttonStyling}" 
                 Grid.Column="2" 
                 Grid.Row="2" 
-                Margin="5" 
+                Margin="0,5.4,-21.2,5.4" 
                 HorizontalAlignment="Right" 
                 IsDefault="True" 
-                Click="Ok_Click">_OK</Button>
+                Click="Ok_Click" Height="Auto">_OK</Button>
     </Grid>
 </Window>

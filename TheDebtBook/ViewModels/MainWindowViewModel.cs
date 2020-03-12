@@ -111,7 +111,6 @@ namespace TheDebtBook.ViewModels
                dlg.DataContext = vm;
                if (dlg.ShowDialog() == true)
                {
-                  newDebitorOrCreditor.DebitsList.Add(new Debit(DateTime.Now, newDebitorOrCreditor.Sum));
                   DebtorOrCreditors.Add(newDebitorOrCreditor);
                   CurrentDebtorOrCreditor = newDebitorOrCreditor;
                }
