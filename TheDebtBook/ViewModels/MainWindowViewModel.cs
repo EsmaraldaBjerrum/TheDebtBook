@@ -66,7 +66,6 @@ namespace TheDebtBook.ViewModels
          var savedDebtorOrCreditors = _fileController.ReadFromFile();
          _debtorOrCreditors = new ObservableCollection<DebtorOrCreditor>();
          _debtorOrCreditors = savedDebtorOrCreditors;
-
       }
 
       ICommand _editDebitorOrCreditorCommand;

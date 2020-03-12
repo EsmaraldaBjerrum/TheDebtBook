@@ -22,13 +22,11 @@ namespace TheDebtBook
         {
             DebitsList = new ObservableCollection<Debit>();
             DebitsList.AddRange(debitsList);
-            DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         public DetailsMVVM()
         {
             DebitsList = new ObservableCollection<Debit>();
-            DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         private string _value = "";
@@ -44,8 +42,7 @@ namespace TheDebtBook
                 _value = value;
                 RaisePropertyChanged();
             }
-        } 
-        
+        }         
 
 
         ICommand _addDebtorOrCreditor;
@@ -63,7 +60,7 @@ namespace TheDebtBook
                 Value = "";
             }
             else
-                Value = "Value is not correct";       
+                Value = "Debit must be a number";       
             
         }
     }
