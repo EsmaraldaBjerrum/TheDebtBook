@@ -22,13 +22,11 @@ namespace TheDebtBook
         {
             DebitsList = new ObservableCollection<Debit>();
             DebitsList.AddRange(debitsList);
-            DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         public DetailsMVVM()
         {
             DebitsList = new ObservableCollection<Debit>();
-            DebitsList.Add(new Debit(DateTime.Now.Date, 56473));
         }
 
         private string _value = "";

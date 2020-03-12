@@ -5,14 +5,17 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:interactivity="http://prismlibrary.com/"
         Title="{Binding Title}" Height="388.667" Width="327.667">
+
     <Window.DataContext>
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Closing">
-            <interactivity:InvokeCommandAction Command="{Binding ClosingCommand}"/>
+            <i:InvokeCommandAction Command="{Binding ClosingCommand}" CommandParameter="{Binding}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="250"/>
@@ -32,12 +35,14 @@
                   SelectedIndex="{Binding CurrentIndex}"
                   SelectedItem="{Binding CurrentDebtorOrCreditor}"
                   IsSynchronizedWithCurrentItem="True">
+
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
                     <i:InvokeCommandAction Command="{Binding EditDebitorOrCreditor}"
                                            CommandParameter="{Binding ElementName=ListDebtorsOrCreditors, Path=SelectedItem}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
+
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

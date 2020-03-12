@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using TheDebtBook.Data;
 using TheDebtBook.DTO;
@@ -49,6 +50,8 @@ namespace TheDebtBook.ViewModels
          }
       }
 
+      public ICommand ClosingCommand { get; set; }
+
       public MainWindowViewModel()
       {
          _fileController = new FileController();
@@ -56,6 +59,8 @@ namespace TheDebtBook.ViewModels
 
          var savedDebtorOrCreditors = _fileController.ReadFromFile();
          _debtorOrCreditors = savedDebtorOrCreditors;
+
+         this.ClosingCommand = new DelegateCommand<object>(this.OnWindowClosing);
       }
 
       ICommand _editDebitorOrCreditorCommand;
@@ -102,17 +107,9 @@ namespace TheDebtBook.ViewModels
          }
       }
 
-      private ICommand _closingCommand;
-
-      public ICommand ClosingCommand
+      private void OnWindowClosing(object obj)
       {
-         get
-         {
-            return _closingCommand ?? (_closingCommand = new DelegateCommand(() =>
-               {
                   _fileController.WriteToFile(DebtorOrCreditors);
-               }));
-         }
       }
    }
 }
