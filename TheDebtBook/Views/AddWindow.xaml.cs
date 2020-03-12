@@ -32,9 +32,9 @@ namespace TheDebtBook.Views
             var viewModel = DataContext as AddViewModel;
             if (viewModel.IsNameAndDebitValid)
             {
-                var newSum = viewModel.NewDebtorOrCreditor.Sum;
-                var newDebit = new Debit(DateTime.Now.Date, newSum);
-                //viewModel.NewDebtorOrCreditor.DebitsList.Add(newDebit);
+                var debitSum = viewModel.NewDebit;
+                var newDebit = new Debit(DateTime.Now.Date, debitSum);
+                viewModel.NewDebtorOrCreditor.DebitsList.Add(newDebit);
                 DialogResult = true;
             }
             else
@@ -44,9 +44,9 @@ namespace TheDebtBook.Views
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             //Dum kode der burde virke......    ^[0-9]([.,][0-9]{1,3})?$
-            Regex regex = new Regex("(^-? 0/.[0 - 9] *[1 - 9] +[0 - 9] *$)| (^-?[1 - 9] +[0 - 9] * ((/.[0-9]*[1 - 9]+[0-9]*$)|(/.[0-9]+)))|(^-?[1-9]+[0-9]*$)|(^0$){1}"); 
+            //Regex regex = new Regex("(^-? 0/.[0 - 9] *[1 - 9] +[0 - 9] *$)| (^-?[1 - 9] +[0 - 9] * ((/.[0-9]*[1 - 9]+[0-9]*$)|(/.[0-9]+)))|(^-?[1-9]+[0-9]*$)|(^0$){1}"); 
             //bool isNotNumber = regex.IsMatch(e.Text);
-            e.Handled = regex.IsMatch(e.Text);
+            //e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

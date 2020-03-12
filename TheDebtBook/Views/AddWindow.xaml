@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local1="clr-namespace:TheDebtBook.ViewModels"
         mc:Ignorable="d"
-        Title="{Binding Path=Title}" Height="134.404" Width="264.289">
+        Title="{Binding Path=Title}" Height="134.404" Width="264.289"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -29,7 +30,7 @@
                Margin="5">_Debit:</Label>
         <TextBox x:Name="nameTxtbx" 
                  Style="{StaticResource textStyling}"
-                 Text="{Binding Path=NewDebit}"
+                 Text="{Binding Path=NewDebtorOrCreditor.Name}"
                  DataContext="{Binding}"
                  Grid.Column=" 1" 
                  Grid.ColumnSpan="2" 
@@ -37,7 +38,7 @@
                  Width="175"/>
         <TextBox x:Name="debitTxtbx" 
                  Style="{StaticResource textStyling}" 
-                 Text="{Binding Path=NewDebtorOrCreditor.Sum}"
+                 Text="{Binding Path=NewDebit}"
                  PreviewTextInput="NumberValidationTextBox"
                  Grid.Column="1" 
                  Grid.Row="1" 

@@ -89,6 +89,7 @@ namespace TheDebtBook.ViewModels
                {
                   CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
                   CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
+                  CurrentDebtorOrCreditor.Sum = tempCreditorOrDebitor.Sum;
                }
 
             }));

@@ -17,6 +17,10 @@ namespace TheDebtBook.DTO
                 }
                 return sum;
             }
+            set
+            {
+                
+            }
         }
         public List<Debit> DebitsList { get; set; }
 

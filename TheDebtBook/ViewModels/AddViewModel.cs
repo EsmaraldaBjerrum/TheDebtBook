@@ -13,7 +13,7 @@ namespace TheDebtBook.ViewModels
         public AddViewModel(string title, DebtorOrCreditor debtorOrCreditor)
         {
             NewDebtorOrCreditor = debtorOrCreditor;
-
+            Title = title;
         }
 
         DebtorOrCreditor newDebtorOrCreditor;
@@ -51,7 +51,7 @@ namespace TheDebtBook.ViewModels
             get
             {
                 bool isNameAndDebitValid = true;
-                if (string.IsNullOrWhiteSpace(NewDebtorOrCreditor.Name) || double.IsNaN(NewDebtorOrCreditor.Sum))
+                if (string.IsNullOrWhiteSpace(NewDebtorOrCreditor.Name) || double.IsNaN(newDebit))
                     isNameAndDebitValid = false;
                 return isNameAndDebitValid;
             }
