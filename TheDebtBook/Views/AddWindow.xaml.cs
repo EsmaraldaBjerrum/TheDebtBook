@@ -30,23 +30,18 @@ namespace TheDebtBook.Views
         private void Ok_Click(object sender, RoutedEventArgs e)
         {
             var viewModel = DataContext as AddViewModel;
-            if (viewModel.IsNameAndDebitValid)
+
+            if (!viewModel.IsNameValid)
+                MessageBox.Show("Please enter a name");
+            else if (!viewModel.IsDebitValid)
+                MessageBox.Show("Debit must be a number");
+            else
             {
-                var newSum = viewModel.NewDebtorOrCreditor.Sum;
-                var newDebit = new Debit(DateTime.Now.Date, newSum);
-                //viewModel.NewDebtorOrCreditor.DebitsList.Add(newDebit);
+                var debitSum = Convert.ToDouble(viewModel.NewDebit);
+                var newDebit = new Debit(DateTime.Now.Date, debitSum);
+                viewModel.NewDebtorOrCreditor.DebitsList.Add(newDebit);
                 DialogResult = true;
             }
-            else
-                MessageBox.Show("Please enter both a name and a initial debit");
-        }
-
-        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
-        {
-            //Dum kode der burde virke......    ^[0-9]([.,][0-9]{1,3})?$
-            Regex regex = new Regex("(^-? 0/.[0 - 9] *[1 - 9] +[0 - 9] *$)| (^-?[1 - 9] +[0 - 9] * ((/.[0-9]*[1 - 9]+[0-9]*$)|(/.[0-9]+)))|(^-?[1-9]+[0-9]*$)|(^0$){1}"); 
-            //bool isNotNumber = regex.IsMatch(e.Text);
-            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }
