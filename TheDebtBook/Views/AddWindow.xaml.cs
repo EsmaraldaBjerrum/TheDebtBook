@@ -44,9 +44,9 @@ namespace TheDebtBook.Views
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             //Dum kode der burde virke......    ^[0-9]([.,][0-9]{1,3})?$
-            //Regex regex = new Regex("(^-? 0/.[0 - 9] *[1 - 9] +[0 - 9] *$)| (^-?[1 - 9] +[0 - 9] * ((/.[0-9]*[1 - 9]+[0-9]*$)|(/.[0-9]+)))|(^-?[1-9]+[0-9]*$)|(^0$){1}"); 
+            Regex regex = new Regex("(^-? 0/.[0 - 9] *[1 - 9] +[0 - 9] *$)| (^-?[1 - 9] +[0 - 9] * ((/.[0-9]*[1 - 9]+[0-9]*$)|(/.[0-9]+)))|(^-?[1-9]+[0-9]*$)|(^0$){1}"); 
             //bool isNotNumber = regex.IsMatch(e.Text);
-            //e.Handled = regex.IsMatch(e.Text);
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

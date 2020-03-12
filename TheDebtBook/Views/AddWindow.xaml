@@ -29,8 +29,8 @@
                Margin="5">_Debit:</Label>
         <TextBox x:Name="nameTxtbx" 
                  Style="{StaticResource textStyling}"
-                 Text="{Binding Path=NewDebtorOrCreditor.Name}"
-                 DataContext="{Binding }"
+                 Text="{Binding Path=NewDebit}"
+                 DataContext="{Binding}"
                  Grid.Column=" 1" 
                  Grid.ColumnSpan="2" 
                  Margin="5" 

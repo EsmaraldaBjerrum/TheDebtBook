@@ -26,6 +26,16 @@ namespace TheDebtBook.ViewModels
             }
         }
 
+        double newDebit;
+        public double NewDebit
+        {
+            get { return newDebit; }
+            set
+            {
+                SetProperty(ref newDebit, value);
+            }
+        }
+
         string title;
         public string Title
         { 
