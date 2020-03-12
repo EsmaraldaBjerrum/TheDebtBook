@@ -39,7 +39,7 @@ namespace TheDebtBook
             }
             set
             {
-                _value = value;
+                _value = value.Replace('.', ',');
                 RaisePropertyChanged();
             }
         }         

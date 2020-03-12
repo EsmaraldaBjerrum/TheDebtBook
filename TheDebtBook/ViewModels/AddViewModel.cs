@@ -33,6 +33,7 @@ namespace TheDebtBook.ViewModels
             set
             {
                 SetProperty(ref newDebit, value);
+                newDebit = newDebit.Replace('.', ',');
             }
         }
 
