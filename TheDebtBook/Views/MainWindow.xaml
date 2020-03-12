@@ -9,7 +9,7 @@
         <viewModels:MainWindowViewModel/>
     </Window.DataContext>
     <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Closing">
+        <i:EventTrigger EventName="Window.Closed">
             <interactivity:InvokeCommandAction Command="{Binding ClosingCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>

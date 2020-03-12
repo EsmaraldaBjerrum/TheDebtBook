@@ -36,6 +36,7 @@ namespace TheDebtBook.ViewModels
          set
          {
             SetProperty(ref _currentDebtorOrCreditor, value);
+            RaisePropertyChanged();
          }
       }
 
@@ -66,16 +67,19 @@ namespace TheDebtBook.ViewModels
          {
             return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
             {
-               var vm = new DetailsMVVM(CurrentDebtorOrCreditor.DebitsList);
-               var dlg = new DetailsWindow
-               {
-                  DataContext = vm,
-                  Owner = App.Current.MainWindow
-               };
+                var vm = new DetailsMVVM(CurrentDebtorOrCreditor.DebitsList);
+                var dlg = new DetailsWindow
+                {
+                    DataContext = vm,
+                    Owner = App.Current.MainWindow
+                };
 
-               dlg.ShowDialog();
+                dlg.ShowDialog();                              
 
-               CurrentDebtorOrCreditor.DebitsList = vm.DebitsList.ToList();
+                DebtorOrCreditor updatedDebtorOrCreditor = new DebtorOrCreditor(CurrentDebtorOrCreditor.Name);
+                updatedDebtorOrCreditor.DebitsList = vm.DebitsList.ToList();
+                DebtorOrCreditors[CurrentIndex] = updatedDebtorOrCreditor;
+
             }));
          }
       }
