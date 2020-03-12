@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 using TheDebtBook.Data;
 using TheDebtBook.DTO;
@@ -24,7 +25,7 @@ namespace TheDebtBook.ViewModels
       public ObservableCollection<DebtorOrCreditor> DebtorOrCreditors
       {
          get { return _debtorOrCreditors; }
-         set { SetProperty(ref _debtorOrCreditors, value); }
+         set { SetProperty(ref _debtorOrCreditors, value);}
       }
 
       DebtorOrCreditor _currentDebtorOrCreditor = null;
@@ -48,25 +49,13 @@ namespace TheDebtBook.ViewModels
          }
       }
 
-      private bool _dirty = false;
-      public bool Dirty
-      {
-         get { return _dirty; }
-         set
-         {
-            SetProperty(ref _dirty, value);
-         }
-      }
-
-
       public MainWindowViewModel()
       {
          _fileController = new FileController();
+         _debtorOrCreditors = new ObservableCollection<DebtorOrCreditor>();
 
          var savedDebtorOrCreditors = _fileController.ReadFromFile();
-         _debtorOrCreditors = new ObservableCollection<DebtorOrCreditor>();
          _debtorOrCreditors = savedDebtorOrCreditors;
-
       }
 
       ICommand _editDebitorOrCreditorCommand;
@@ -77,21 +66,16 @@ namespace TheDebtBook.ViewModels
          {
             return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
             {
-               var tempCreditorOrDebitor = CurrentDebtorOrCreditor.Clone();
-               var vm = new DetailsMVVM(tempCreditorOrDebitor.DebitsList);
+               var vm = new DetailsMVVM(CurrentDebtorOrCreditor.DebitsList);
                var dlg = new DetailsWindow
                {
                   DataContext = vm,
                   Owner = App.Current.MainWindow
                };
 
-               if (dlg.ShowDialog() == true)
-               {
-                  CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
-                  CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
-                  CurrentDebtorOrCreditor.Sum = tempCreditorOrDebitor.Sum;
-               }
+               dlg.ShowDialog();
 
+               CurrentDebtorOrCreditor.DebitsList = vm.DebitsList.ToList();
             }));
          }
       }
