@@ -70,53 +70,30 @@ namespace TheDebtBook.ViewModels
       }
 
       ICommand _editDebitorOrCreditorCommand;
+
       public ICommand EditDebitorOrCreditor
       {
          get
          {
             return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
-               {
-                  var tempCreditorOrDebitor = CurrentDebtorOrCreditor.Clone();
-                  var vm = new DetailsMVVM(tempCreditorOrDebitor.DebitsList);
-                  var dlg = new DetailsWindow
-                  {
-                     DataContext = vm,
-                     Owner = App.Current.MainWindow
-                  };
-
-                  if (dlg.ShowDialog() == true)
-                  {
-                     CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
-                     CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
-                     CurrentDebtorOrCreditor.Sum = tempCreditorOrDebitor.Sum;
-                  }
-
-        ICommand _editDebitorOrCreditorCommand;
-        public ICommand EditDebitorOrCreditor
-        {
-            get
             {
-                return _editDebitorOrCreditorCommand ?? (_editDebitorOrCreditorCommand = new DelegateCommand(() =>
-                   {
-                       var tempCreditorOrDebitor = CurrentDebtorOrCreditor.Clone();
-                       var vm = new DetailsMVVM(tempCreditorOrDebitor);
-                       var dlg = new DetailsWindow { DataContext = vm, Owner = App.Current.MainWindow };
-                       if (dlg.ShowDialog() == true)
-                       {
-                           CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
-                           CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
-                           CurrentDebtorOrCreditor.Sum = tempCreditorOrDebitor.DebitsList.Sum(item => item.DebitValue);
-                       }
+               var tempCreditorOrDebitor = CurrentDebtorOrCreditor.Clone();
+               var vm = new DetailsMVVM(tempCreditorOrDebitor.DebitsList);
+               var dlg = new DetailsWindow
+               {
+                  DataContext = vm,
+                  Owner = App.Current.MainWindow
+               };
 
-                       Dirty = true;
-                   },
-                   () =>
-                   {
-                       return CurrentIndex >= 0;
-                   }
-                ).ObservesProperty(() => CurrentIndex));
-            }
-        }
+               if (dlg.ShowDialog() == true)
+               {
+                  CurrentDebtorOrCreditor.Name = tempCreditorOrDebitor.Name;
+                  CurrentDebtorOrCreditor.DebitsList = tempCreditorOrDebitor.DebitsList;
+               }
+
+            }));
+         }
+      }
 
       ICommand _newDebitorOrCreditorCommand;
 
